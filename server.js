@@ -28,20 +28,6 @@ const fs = require("fs")
 const db = require("./database.js")
 const port = argv["port"] || 5555
 
-if(argv.debug == "true" || argv.debug == true){
-    app.get("/app/log/access", (req,res) => {
-        try{
-            const stmt = db.prepare("SELECT * FROM accesslog").all()
-            res.status(200).json(stmt)
-        }catch(err){
-            console.error(err)
-        }
-    })
-    app.get("/app/error", (req, res) => {
-        throw new Error("Error test successful.")
-    })
-}
-
 if(argv.log != "false" && argv.log != false){
     const accesslogstream = fs.createWriteStream("access.log", {flags: "a"})
     app.use(morgan('combined', {stream:accesslogstream }))
@@ -68,6 +54,16 @@ app.use((req, res, next) => {
     const info = stmt.run(logdata.remoteaddr, logdata.remoteuser, logdata.time, logdata.method, logdata.url, logdata.protocol, logdata.httpversion, logdata.status, logdata.referer, logdata.useragent)
     next()
 })
+
+app.get('/app/log/access', (req, res) => {
+    const stmt = db.prepare('SELECT * FROM accesslog').all()
+    res.status(200).json(stmt)
+})
+
+app.get('/app/error', (req, res) => {
+    throw new error ('Error test successful')
+})
+
 app.get("/app/", (req, res) => {
     res.statusCode = 200
     res.statusMessage = "ok"
