@@ -23,7 +23,8 @@ if (argv.help || argv.h){
 }
 const express = require("express")
 const app = express()
-const morgan = require("morgan")
+const morgan = require('morgan')
+const fs = require("fs")
 const db = require("./database.js")
 const port = argv["port"] || 5555
 
