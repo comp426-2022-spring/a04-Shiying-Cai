@@ -1,9 +1,8 @@
 const db = require("./database.js")
 const http = require('http')
-  
-//Require express.js
 const express = require('express');
 const app = express()
+const morgan = require("morgan")
 
 //take an arbitrary port number from argument. default = 5000
 const args = require('minimist')(process.argv.slice(2))
