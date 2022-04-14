@@ -1,0 +1,25 @@
+{
+  "name": "a03-shiying-cai",
+  "version": "1.0.0",
+  "description": "coin flips API",
+  "scripts": {
+    "test": "node server.js --port=5555"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2022-spring/a03-Shiying-Cai.git"
+  },
+  "author": "Shiying Cai",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/comp426-2022-spring/a03-Shiying-Cai/issues"
+  },
+  "homepage": "https://github.com/comp426-2022-spring/a03-Shiying-Cai#readme",
+  "dependencies": {
+    "better-sqlite3": "^7.5.1",
+    "curl": "^0.1.4",
+    "express": "^4.17.3",
+    "minimist": "^1.2.5",
+    "node-libcurl": "^2.3.4"
+  }
+}
